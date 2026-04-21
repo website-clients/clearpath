@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:www.clearpathact.com)"
+      "WebFetch(domain:www.clearpathact.com)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"accounting finance professional trust Montreal service\" --design-system -p \"ClearPath Accounting\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"layout responsive animation accessibility\" --domain ux -n 5)",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"hero trust authority landing\" --domain landing -n 3)",
+      "Bash(grep -E \"\\\\.\\(css|js|ts\\)$\")",
+      "Bash(python skills/ui-ux-pro-max/scripts/search.py \"accounting fintech professional trust service\" --design-system -p \"ClearPath Accounting\")",
+      "Bash(python .claude/skills/ui-ux-pro-max/scripts/search.py \"accounting fintech professional trust service\" --design-system -p \"ClearPath Accounting\")",
+      "WebFetch(domain:www.clearpathaccounting.ca)",
+      "WebFetch(domain:blinq.me)"
     ]
   }
 }

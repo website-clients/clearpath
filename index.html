@@ -167,6 +167,27 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .service-card.featured .service-icon{background:rgba(0,200,150,.15)}
 .service-card.featured .service-link{color:var(--green)}
 .service-card.featured:hover{border-color:rgba(0,200,150,.3)}
+.service-card{cursor:pointer}
+
+/* ─── SERVICE MODAL ──────────────────────────────── */
+.smodal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.55);backdrop-filter:blur(6px);z-index:3000;opacity:0;pointer-events:none;transition:opacity .28s}
+.smodal-backdrop.open{opacity:1;pointer-events:all}
+.smodal{position:fixed;top:50%;left:50%;transform:translate(-50%,-44%);z-index:3001;width:min(680px,94vw);max-height:88vh;display:flex;flex-direction:column;background:#fff;border-radius:28px;box-shadow:0 32px 80px rgba(0,0,0,.22);opacity:0;transition:opacity .28s,transform .28s;pointer-events:none;overflow:hidden}
+.smodal-backdrop.open .smodal{opacity:1;transform:translate(-50%,-50%);pointer-events:all}
+.smodal-header{position:sticky;top:0;z-index:1;background:#fff;padding:20px 20px 0;display:flex;justify-content:flex-end;border-radius:28px 28px 0 0}
+.smodal-body{overflow-y:auto;padding:0 48px 48px;flex:1}
+.smodal-close{width:36px;height:36px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;flex-shrink:0}
+.smodal-close:hover{background:var(--border)}
+.smodal-close svg{width:16px;height:16px;stroke:var(--muted);stroke-width:2.5;fill:none}
+.smodal-icon{width:60px;height:60px;border-radius:16px;background:rgba(0,200,150,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.smodal-icon svg{width:28px;height:28px;color:var(--green)}
+.smodal-title{font-size:26px;font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:12px}
+.smodal-intro{font-size:16px;color:var(--muted);line-height:1.75;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid var(--border)}
+.smodal-subtitle{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green2);margin-bottom:14px}
+.smodal-features{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.smodal-feature{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--text);line-height:1.6}
+.smodal-check{width:20px;height:20px;border-radius:50%;background:rgba(0,200,150,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.smodal-check svg{width:11px;height:11px;stroke:var(--green);stroke-width:2.5;fill:none}
 
 /* ─── WHY ────────────────────────────────────────── */
 .why-section{padding:100px 0;background:var(--surface)}
@@ -320,6 +341,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .faq-ans{padding-top:16px}
 
 /* ─── CONTACT FORM ───────────────────────────────── */
+.certifications-section{padding:100px 0;background:var(--surface)}
+.certifications-header{text-align:center;margin-bottom:56px}
+.certifications-row{margin-bottom:56px}
+.certifications-row-label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:28px}
+.certifications-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}
+.cert-logo-item{display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:18px 28px;min-width:120px;transition:all .25s}
+.cert-logo-item:hover{border-color:rgba(0,200,150,.3);box-shadow:0 8px 28px rgba(0,200,150,.08);transform:translateY(-2px)}
+.cert-logo-item img{max-height:48px;max-width:120px;width:auto;object-fit:contain;filter:grayscale(30%);opacity:.85;transition:all .25s}
+.cert-logo-item:hover img{filter:none;opacity:1}
+.certifications-divider{border:none;border-top:1px solid var(--border);margin:0 0 56px}
 .contact-section{padding:100px 0;background:#fff}
 .contact-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
 .contact-info{display:flex;flex-direction:column;gap:36px}
@@ -419,7 +450,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <div class="container">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="assets/images/logos/logo1.png" alt="ClearPath Accounting" style="height:44px;width:auto;filter:none" id="nav-logo-img">
+        <img src="assets/images/logos/logo.png" alt="ClearPath Accounting" style="height:44px;width:auto;filter:none" id="nav-logo-img">
       </a>
       <div class="nav-links">
         <a href="#services"  class="nav-link">Services</a>
@@ -430,7 +461,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="nav-cta">
         <a href="tel:5149242535" class="nav-phone">514-924-2535</a>
-        <a href="#contact" class="btn btn-primary" style="padding:10px 22px;font-size:14px">Free Consultation</a>
+        <a href="https://calendly.com/info-clearpath-act" class="btn btn-primary" style="padding:10px 22px;font-size:14px" target="_blank" rel="noopener">Free Consultation</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -446,7 +477,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   <a href="#pricing"   class="nav-link">Pricing</a>
   <a href="#faq"       class="nav-link">FAQ</a>
   <a href="#contact"   class="nav-link">Contact</a>
-  <a href="#contact"   class="btn btn-primary">Free Consultation →</a>
+  <a href="https://calendly.com/info-clearpath-act" class="btn btn-primary" target="_blank" rel="noopener">Free Consultation →</a>
 </div>
 
 <!-- ═══ HERO ══════════════════════════════════════════ -->
@@ -470,7 +501,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         </h1>
         <p class="hero-desc">Expert tax filing, bookkeeping, and financial guidance for individuals, businesses, and newcomers to Canada — handled with precision and care.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">
+          <a href="https://calendly.com/info-clearpath-act" class="btn btn-primary" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
             Book a Free Consultation
           </a>
@@ -499,7 +530,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="hcard">
           <div class="hcard-header">
             <span class="hcard-title">Tax Refund Summary</span>
-            <span class="hcard-badge">2024 Filed ✓</span>
+            <span class="hcard-badge">2025 Filed ✓</span>
           </div>
           <div class="hcard-big">$4,820<span> CAD</span></div>
           <div style="margin-top:6px;font-size:13px;color:rgba(255,255,255,.35)">Total refund maximized this season</div>
@@ -518,19 +549,19 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
           <div class="hcard-services">
             <div class="hcard-service">
               <div class="hcard-service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-              <span class="hcard-service-name">Tax Filing</span>
+              <span class="hcard-service-name">Accounting</span>
             </div>
             <div class="hcard-service">
               <div class="hcard-service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-              <span class="hcard-service-name">Bookkeeping</span>
+              <span class="hcard-service-name">Personal Income Taxes</span>
             </div>
             <div class="hcard-service">
               <div class="hcard-service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-              <span class="hcard-service-name">Tax Planning</span>
+              <span class="hcard-service-name">Self Employed / Businsesses</span>
             </div>
             <div class="hcard-service">
               <div class="hcard-service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-              <span class="hcard-service-name">Sponsorship</span>
+              <span class="hcard-service-name">Permit and Application</span>
             </div>
           </div>
         </div>
@@ -582,39 +613,39 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal">
+      <div class="service-card reveal" data-modal="accounting">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
-        <h3>Personal Tax Filing</h3>
-        <p>Tax preparation for individuals and families with a focus on maximizing every eligible deduction — done right, done on time.</p>
+        <h3>Accounting</h3>
+        <p>We handle your year-end financial statements and corporate tax filings so you stay compliant with CRA — without the stress of Canada's ever-changing tax rules.</p>
         <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="service-card reveal reveal-delay-1">
+      <div class="service-card reveal reveal-delay-1" data-modal="personal-tax">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
         </div>
-        <h3>Business Tax Planning</h3>
-        <p>Strategic planning to reduce tax risk, ensure compliance, and keep your business operating at peak financial health year-round.</p>
+        <h3>Personal Income Taxes</h3>
+        <p>Accurate, maximized personal tax returns for employees, investors, and newcomers to Canada — filed on time with every eligible deduction captured.</p>
         <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="service-card featured reveal reveal-delay-2">
+      <div class="service-card featured reveal reveal-delay-2" data-modal="selfemployed">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
         </div>
-        <h3>Bookkeeping Support</h3>
-        <p>Expense tracking, reconciliation, and clean financial records — so you always know exactly where your money stands.</p>
+        <h3>Self-Employed &amp; Businesses</h3>
+        <p>From bookkeeping and tax planning to corporate structuring — we provide the full financial backbone your business needs to grow confidently.</p>
         <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="service-card reveal">
+      <div class="service-card reveal" data-modal="permit">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
-        <h3>Financial Guidance</h3>
-        <p>Professional support for complex financial scenarios — from major life events to investment decisions and long-term planning.</p>
+        <h3>Permits &amp; Applications</h3>
+        <p>We guide you through CRA registrations, GST/HST setup, business number applications, and government program filings — accurately and on time.</p>
         <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
       </div>
-      <div class="service-card reveal reveal-delay-1">
+      <!-- <div class="service-card reveal reveal-delay-1">
         <div class="service-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
@@ -629,7 +660,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <h3>Corporate Tax Planning</h3>
         <p>Complex tax strategy services for corporations — built on deep industry experience in aerospace, software, transportation, and more.</p>
         <span class="service-link">Learn more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -768,7 +799,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
       </div>
       <div class="team-card reveal reveal-delay-2">
         <div class="team-avatar">
-          <img src="assets/images/team/photo-morgan-james.avif" alt="Morgan James — Account Executive" loading="lazy">
+          <img src="assets/images/team/photo-morgan-james.avif" alt="Morgan James — Account Executive" loading="lazy" style="object-fit:contain;object-position:center top;transform:scale(1.2);transform-origin:top center;">
         </div>
         <div class="team-info">
           <div class="team-name">Morgan James</div>
@@ -864,7 +895,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 </section>
 
 <!-- ═══ PRICING ═══════════════════════════════════════ -->
-<section id="pricing" class="pricing-section">
+<section id="pricing" class="pricing-section" style="display:none">
   <div class="pricing-bg"></div>
   <div class="pricing-glow"></div>
   <div class="container" style="position:relative">
@@ -1002,6 +1033,61 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   </div>
 </section>
 
+<!-- ═══ CERTIFICATIONS ══════════════════════════════════ -->
+<section id="certifications" class="certifications-section">
+  <div class="container">
+    <div class="certifications-header reveal">
+      <p class="section-label">Credentials &amp; Tools</p>
+      <h2 class="section-title">Trusted, Certified &amp; <span>Well-Equipped</span></h2>
+      <p class="section-sub" style="margin:16px auto 0;text-align:center;">Our team holds industry-recognized certifications and works with the platforms that leading firms rely on.</p>
+    </div>
+    <div class="certifications-row reveal reveal-delay-1">
+      <p class="certifications-row-label">Certifications</p>
+      <div class="certifications-logos">
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/42bfbb02-2c33-40f7-bb49-aa25d42e15d8/Elite+Tier+Badge.png" alt="Elite Tier Badge" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/c62d9847-79ac-4fbb-a851-9662a506115c/1_Badge_Online_large%402x.png" alt="Certification Badge" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/a14c6664-db66-4c98-897c-7b0628f7d594/xero-advisor-certified-individual-badge.png" alt="Xero Advisor Certified" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/7f361e6d-a774-46eb-bed8-d9c3113dce64/CPA+Logo%403x.png" alt="CPA Logo" loading="lazy">
+        </div>
+      </div>
+    </div>
+    <hr class="certifications-divider">
+    <div class="certifications-row reveal reveal-delay-2">
+      <p class="certifications-row-label">Platforms &amp; Tools</p>
+      <div class="certifications-logos">
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/7414035f-552b-4815-a940-1d4dfd5c7df8/karbon+-+best+version+I+think.png" alt="Karbon" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/a67942d5-d0f3-4ba9-a441-04532bba6cdf/Fathom.png" alt="Fathom" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/d8f39c36-3b5d-47e7-b2e0-914d32b120ee/syft-logo.a87befb15b464e31b3f2.png" alt="Syft" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/61d34590-bcb7-4794-9ff0-fde07a3c48ef/Rotessa-logo-main-website-logo+1.png" alt="Rotessa" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/02fbed76-8652-4bbd-bda0-a2b86ca33a27/Wise.png" alt="Wise" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/4473a203-d8ed-40c3-a6b1-9410c92dd482/justwealth-logo.png" alt="Justwealth" loading="lazy">
+        </div>
+        <div class="cert-logo-item">
+          <img src="https://images.squarespace-cdn.com/content/v1/63ee71f113b1001d8d787ffe/9740ad0d-75e9-46d1-8c6a-1212e116901c/float.png" alt="Float" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CONTACT FORM ════════════════════════════════════ -->
 <section id="contact" class="contact-section">
   <div class="container">
@@ -1104,7 +1190,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <p class="cta-sub">Join 1,200+ Canadians who trust ClearPath to handle their finances with precision and care. Book your free consultation today.</p>
       </div>
       <div class="cta-actions" style="flex-direction:row;flex-wrap:wrap;gap:12px">
-        <a href="#contact" class="btn btn-primary" style="font-size:15px;padding:14px 28px">Book Free Consultation</a>
+        <a href="https://calendly.com/info-clearpath-act" class="btn btn-primary" style="font-size:15px;padding:14px 28px" target="_blank" rel="noopener">Book Free Consultation</a>
         <a href="tel:5149242535" class="btn btn-outline" style="font-size:15px;padding:14px 28px">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 0112 18.79a19.5 19.5 0 01-6-6A19.79 19.79 0 012.08 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           514-924-2535
@@ -1120,21 +1206,21 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="assets/images/logos/logo1.png" alt="ClearPath Accounting" style="height:48px;width:auto;filter:none">
+          <img src="assets/images/logos/logo.png" alt="ClearPath Accounting" style="height:48px;width:auto;filter:none">
         </div>
         <p class="footer-tagline">Expert accounting, tax filing, and financial guidance for individuals, businesses, and newcomers in Montreal &amp; Quebec.</p>
         <div class="footer-social">
-          <a href="https://linkedin.com" class="footer-social-btn" target="_blank" rel="noopener">
+          <a href="https://www.linkedin.com/in/rashid-riaz-79a3ba378" class="footer-social-btn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <a href="https://facebook.com" class="footer-social-btn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="https://instagram.com" class="footer-social-btn" target="_blank" rel="noopener">
+          <a href="https://instagram.com/clearpath.act" class="footer-social-btn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
-          <a href="https://twitter.com" class="footer-social-btn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="https://www.tiktok.com/@clearpath.account" class="footer-social-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=15149242535" class="footer-social-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </a>
         </div>
       </div>
@@ -1164,8 +1250,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
         <div class="footer-links">
           <a href="tel:5149242535">514-924-2535</a>
           <a href="mailto:rashid.riaz@clearpathact.com">rashid.riaz@clearpathact.com</a>
-          <a href="https://maps.google.com" target="_blank" rel="noopener">900 Boul. Cavendish #200<br>Saint-Laurent, QC H4R 1Z3</a>
-          <a href="#contact" style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;padding:10px 18px;border-radius:8px;font-weight:600;font-size:13px">Book Free Consult →</a>
+          <a href="https://maps.google.com/?q=9900+Boul.+Cavendish+Suite+200+Saint-Laurent+Quebec+H4M+2V2" target="_blank" rel="noopener">9900 Boul. Cavendish #200<br>Saint-Laurent, QC H4M 2V2</a>
+          <a href="https://calendly.com/info-clearpath-act" style="margin-top:8px;display:inline-flex;align-items:center;gap:6px;background:var(--green);color:#fff;padding:10px 18px;border-radius:8px;font-weight:600;font-size:13px" target="_blank" rel="noopener">Book Free Consult →</a>
         </div>
       </div>
     </div>
@@ -1334,5 +1420,114 @@ document.getElementById('contact-form').addEventListener('submit', e => {
 <style>
 @keyframes spin{to{transform:rotate(360deg)}}
 </style>
+<!-- ═══ SERVICE MODALS ════════════════════════════════ -->
+<div class="smodal-backdrop" id="smodal-backdrop">
+  <div class="smodal" id="smodal">
+    <div class="smodal-header">
+      <button class="smodal-close" id="smodal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="smodal-body">
+      <div class="smodal-icon" id="smodal-icon" style="display:none"></div>
+      <h2 class="smodal-title" id="smodal-title"></h2>
+      <p class="smodal-intro" id="smodal-intro"></p>
+      <p class="smodal-subtitle">What's included</p>
+      <ul class="smodal-features" id="smodal-features"></ul>
+      <a href="#contact" class="btn btn-primary" id="smodal-cta" style="width:100%;justify-content:center;display:none;" onclick="document.getElementById('smodal-backdrop').classList.remove('open')">Get Started →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const serviceData = {
+  accounting: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+    title: 'Accounting',
+    intro: "Navigating Canada's corporate tax rules is complex and constantly evolving. We manage your year-end financial statements and tax filings end-to-end, keeping you fully compliant with CRA while you focus on running your business.",
+    features: [
+      'Preparation of year-end financial statements',
+      'Corporate tax return (T2) filing with CRA',
+      'Deadline tracking and CRA compliance oversight',
+      'Identification of eligible deductions and credits',
+      'Communication with CRA on your behalf',
+      'Strategic advice on compensation and distributions'
+    ]
+  },
+  'personal-tax': {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>`,
+    title: 'Personal Income Taxes',
+    intro: "Whether you're an employee, investor, newcomer to Canada, or filing for the first time — we prepare accurate, fully optimized personal tax returns that capture every eligible deduction and credit to maximize your refund.",
+    features: [
+      'Personal tax return (T1) preparation and filing',
+      'Optimization of deductions and tax credits',
+      'Support for newcomers and first-time filers',
+      'Rental income, investment income, and RRSP planning',
+      'CERB, employment insurance, and benefit reconciliation',
+      'Prior-year amendments and CRA review support'
+    ]
+  },
+  selfemployed: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>`,
+    title: 'Self-Employed & Businesses',
+    intro: "From day-to-day bookkeeping to strategic tax planning and corporate structuring, we provide the full financial backbone your business needs — so you always know where you stand and can make decisions with confidence.",
+    features: [
+      'Full-cycle bookkeeping and transaction processing',
+      'Bank reconciliation and write-off identification',
+      'Salary vs. dividend analysis and compensation planning',
+      'Holding company setup and corporate restructuring advice',
+      'Cloud accounting system setup (Xero, QuickBooks)',
+      'Virtual CFO: monthly cashflow forecasts and KPI reporting',
+      'Quarterly strategy sessions and management reporting'
+    ]
+  },
+  permit: {
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: 'Permits & Applications',
+    intro: "Government registrations and program applications can be confusing and time-sensitive. We handle the paperwork so you don't miss deadlines, make errors, or leave money on the table.",
+    features: [
+      'CRA business number (BN) registration',
+      'GST/HST account setup and filing',
+      'Payroll account registration (RP)',
+      'Import/export account setup (RM)',
+      'Government subsidy and benefit program applications',
+      'Corporate registration and business permit assistance',
+      'Ongoing compliance reminders and deadline management'
+    ]
+  }
+};
+
+const backdrop = document.getElementById('smodal-backdrop');
+const modalIcon = document.getElementById('smodal-icon');
+const modalTitle = document.getElementById('smodal-title');
+const modalIntro = document.getElementById('smodal-intro');
+const modalFeatures = document.getElementById('smodal-features');
+
+document.querySelectorAll('.service-card[data-modal]').forEach(card => {
+  card.addEventListener('click', () => {
+    const key = card.dataset.modal;
+    const data = serviceData[key];
+    if (!data) return;
+    modalIcon.innerHTML = data.icon;
+    modalTitle.textContent = data.title;
+    modalIntro.textContent = data.intro;
+    modalFeatures.innerHTML = data.features.map(f => `
+      <li class="smodal-feature">
+        <span class="smodal-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20,6 9,17 4,12"/></svg></span>
+        ${f}
+      </li>`).join('');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+document.getElementById('smodal-close').addEventListener('click', closeModal);
+backdrop.addEventListener('click', e => { if (e.target === backdrop) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+function closeModal() {
+  backdrop.classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
 </body>
 </html>
